@@ -9,13 +9,12 @@ public class EchoServer {
 	public static void main(String[] args) {
 
 		try {
-			
-			System.setProperty("javax.net.ssl.keyStore", "C:\\Users\\genius\\Desktop\\key\\XDSServer.jks");
+			// ./LogSender --host 10.0.1.113 --port 7777 --protocol TLS --keystore /etc/tomcat7/XDSServer.jks --truststore /etc/tomcat7/XDSServer.jks --type 1
 
+			System.setProperty("javax.net.ssl.keyStore", "C:\\Users\\genius\\Desktop\\key\\XDSServer.jks");
 			
 			System.setProperty("javax.net.ssl.keyStorePassword", "changeit");
 
-			
 			System.setProperty("javax.net.debug", "ssl");
 
 			System.out.println("***********keyStore : " + System.getProperty("javax.net.ssl.keyStore"));
@@ -25,7 +24,7 @@ public class EchoServer {
 			SSLServerSocketFactory sslserversocketfactory = (SSLServerSocketFactory) SSLServerSocketFactory
 					.getDefault();
 
-			
+			// SSL 서버의 포트 번호 지정. 7777번
 			SSLServerSocket sslserversocket = (SSLServerSocket) sslserversocketfactory.createServerSocket(7777);
 			System.out.println("Wating Connection");
 
