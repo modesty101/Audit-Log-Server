@@ -6,8 +6,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ValidationXML {
-	private static String path = "TLS_Cert.xml";
-
+	private static final String path = "TLS_Cert.xml";
+	
+	/**
+	 * 정상적인 XML 파일인지 판단합니다.
+	 * 
+	 * @return flag 
+	 * @throws Exception
+	 */
 	public static boolean isValidXml() throws Exception {
 		boolean flag = false;
 

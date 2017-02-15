@@ -9,14 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLXML;
 
 public class PostgreSQLJDBC {
-	
+	/**
+	 * 테이블 생성
+	 */
 	public void createTable() {
 		Connection c = null;
 		Statement stmt = null;
 
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection("jdbc:postgresql://192.168.214.138:5432/niko", "postgres", "1234");
+			c = DriverManager.getConnection("jdbc:postgresql://192.168.214.140:5432/niko", "postgres", "1234");
 			System.out.println("Opened Database successfully!!");
 
 			stmt = c.createStatement();
@@ -31,7 +33,12 @@ public class PostgreSQLJDBC {
 		}
 		System.out.println("Log table created successfully..!");
 	}
-	
+
+	/**
+	 * 테이블 삽입
+	 * 
+	 * @throws Exception
+	 */
 	public static void insertTable() throws Exception {
 		BufferedReader br = new BufferedReader(new FileReader("TLS_Cert.xml"));
 		PreparedStatement ps = null;
@@ -44,27 +51,27 @@ public class PostgreSQLJDBC {
 		}
 		input = input.toString();
 		System.out.println("---- Finally.. Save the XML ----");
-		System.out.println("Data : "+input);
+		System.out.println("Data : " + input);
 		System.out.println();
-		
+
 		try {
 			System.out.println("===== (PostgreSQL) Connection =====");
-			
+
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection("jdbc:postgresql://192.168.214.138:5432/niko", "postgres", "1234");
+			c = DriverManager.getConnection("jdbc:postgresql://192.168.214.140:5432/niko", "postgres", "1234");
 			c.setAutoCommit(false);
-			
+
 			System.out.println("Opened database successfully");
 
 			String sql = "INSERT INTO Log (info) " + "VALUES (XML(?));";
 			ps = c.prepareStatement(sql);
-			
+
 			SQLXML sqlxml = c.createSQLXML();
 			sqlxml.setString(input);
 
 			ps.setSQLXML(1, sqlxml);
 			ps.executeUpdate();
-			
+
 			c.commit();
 			c.close();
 		} catch (Exception e) {
@@ -74,7 +81,7 @@ public class PostgreSQLJDBC {
 		System.out.println("Records created successfully");
 		br.close();
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		PostgreSQLJDBC.insertTable();
 	}
