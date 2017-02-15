@@ -13,7 +13,6 @@ import javax.net.ssl.SSLSocket;
  * @author 김동규
  * @since 2017
  */
-
 public class EchoServer {
 
 	public static void main(String[] args) {
@@ -26,7 +25,7 @@ public class EchoServer {
 
 			/* 키와 신뢰 정보를 얻어옴. */
 			System.out.println("***********keyStore : " + System.getProperty("javax.net.ssl.keyStore"));
-			System.out.println("***********trustStore : " + System.getProperty("javax.net.ssl.trustStore"));
+			// System.out.println("***********trustStore : " + System.getProperty("javax.net.ssl.trustStore"));
 
 			/* SSL 서버 초기화 */
 			SSLServerSocketFactory sslserversocketfactory = (SSLServerSocketFactory) SSLServerSocketFactory

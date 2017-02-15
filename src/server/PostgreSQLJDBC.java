@@ -8,9 +8,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLXML;
 
+/**
+ * PostgreSQL 
+ *  - DOM 객체에 파일을 넣어, 파싱을 시도함.
+ *  - 결과에 따라 XML파일인지 아닌지 확인함.
+ *  
+ * @author 김동규
+ * @since 2017
+ */
 public class PostgreSQLJDBC {
 	/**
-	 * 테이블 생성
+	 * PostgreSQL - 테이블을 생성합니다.
+	 * 
+	 * @see PostgreSQL - Create table
 	 */
 	public void createTable() {
 		Connection c = null;
@@ -35,7 +45,7 @@ public class PostgreSQLJDBC {
 	}
 
 	/**
-	 * 테이블 삽입
+	 * PostgreSQL - 테이블안에 데이터를 삽입합니다.
 	 * 
 	 * @throws Exception
 	 */
@@ -81,7 +91,7 @@ public class PostgreSQLJDBC {
 		System.out.println("Records created successfully");
 		br.close();
 	}
-
+	
 	public static void main(String[] args) throws Exception {
 		PostgreSQLJDBC.insertTable();
 	}
